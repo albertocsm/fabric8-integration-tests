@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.github.pires.example</groupId>
+        <artifactId>fabric8-hibernate</artifactId>
+        <version>0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>tests</artifactId>
+    <name>TEST</name>
+    <url>http://maven.apache.org</url>
+    <packaging>bundle</packaging>
+
+    <repositories>
+        <repository>
+            <id>ops4j-releases</id>
+            <name>Ops4j Releases</name>
+            <url>https://oss.sonatype.org/content/repositories/ops4j-releases</url>
+        </repository>
+        <repository>
+            <id>jboss-fuse-ea</id>
+            <url>https://repository.jboss.org/nexus/content/groups/ea</url>
+        </repository>
+        <repository>
+            <id>release.fusesource.org</id>
+            <name>FuseSource Release Repository</name>
+            <url>https://repo.fusesource.com/nexus/content/groups/m2-release-proxy</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <!--Fabric-->
+        <dependency>
+            <groupId>io.fabric8</groupId>
+            <artifactId>fabric8-karaf</artifactId>
+            <version>${dependency.fabric.version}</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>io.fabric8.itests</groupId>
+            <artifactId>fabric-itests-common</artifactId>
+            <version>${dependency.fabric.version}</version>
+        </dependency>
+
+        <!--Fabric Dependencies-->
+        <dependency>
+            <groupId>io.fabric8</groupId>
+            <artifactId>fabric-api</artifactId>
+            <version>${dependency.fabric.version}</version>
+        </dependency>
+
+        <!-- Bundles to install into Karaf -->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>rest</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>dal</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+
+        <!--OSGi-->
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.compendium</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <properties>
+        <pax.exam.version>3.4.0</pax.exam.version>
+        <dependency.karaf.version>2.3.3</dependency.karaf.version>
+        <dependency.cxf.version>2.6.3</dependency.cxf.version>
+        <dependency.hamcrest.version>1.3.0.1</dependency.hamcrest.version>
+        <dependency.fabric.version>1.0.0.redhat-352</dependency.fabric.version>
+
+        <osgi.import.pkg>*</osgi.import.pkg>
+        <osgi.export.pkg>!*</osgi.export.pkg>
+        <osgi.private.pkg>com.github.pires.example.tests</osgi.private.pkg>
+    </properties>
+
+</project>
